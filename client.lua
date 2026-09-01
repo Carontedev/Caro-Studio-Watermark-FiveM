@@ -78,7 +78,7 @@ end
 -- VALIDACION DE CONFIG
 -- ========================================
 local function validateConfig()
-    local validModes = { ['static'] = true, ['shimmer'] = true, ['shimmer-rotatory'] = true, ['rotatory'] = true, ['breathing'] = true, ['floating'] = true }
+    local validModes = { ['static'] = true, ['shimmer'] = true, ['shimmer-rotatory'] = true, ['rotatory'] = true, ['breathing'] = true, ['floating'] = true, ['jelly'] = true }
     local validAnchors = { ['top-left'] = true, ['top-center'] = true, ['top-right'] = true, ['bottom-left'] = true, ['bottom-right'] = true }
     local function err(field, msg)
         print(('[^1cs_watermark^7] ERROR: config.%s - %s'):format(field, msg))
@@ -102,7 +102,7 @@ local function validateConfig()
     end
     if Config.animation then
         local m = Config.animation.mode
-        if m and not validModes[m] then err('animation.mode', ('"%s" no es valido. Opciones: static, shimmer, shimmer-rotatory, rotatory, breathing, floating'):format(tostring(m))) end
+        if m and not validModes[m] then err('animation.mode', ('"%s" no es valido. Opciones: static, shimmer, shimmer-rotatory, rotatory, breathing, floating, jelly'):format(tostring(m))) end
         if Config.animation.speed ~= nil and (type(Config.animation.speed) ~= 'number' or Config.animation.speed <= 0) then err('animation.speed', 'debe ser numero positivo') end
         if Config.animation.intensity ~= nil and (type(Config.animation.intensity) ~= 'number' or Config.animation.intensity <= 0) then err('animation.intensity', 'debe ser numero positivo') end
     end

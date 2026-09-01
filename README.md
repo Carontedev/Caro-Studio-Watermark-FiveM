@@ -32,7 +32,9 @@
 ## Features
 
 - 🎨 **NUI logo** with transparency, auto-scaled to the player's screen resolution
-- ✨ **6 animation modes**: static, rotatory, breathing, floating, shimmer and combined
+- ✨ **7 animation modes**: static, rotatory, breathing, floating, shimmer, combined and jelly
+- 🌊 **Signature jelly loop**: squash-and-stretch jump with 720° spin and a shine sweep, fully time-choreographed
+- 🎬 **Graceful startup**: the logo fades in directly at its configured position — no flicker or position jump
 - 🎚️ **Fine tuning**: speed and intensity configurable independently
 - 📢 **Smart auto-hide**: hides automatically during txAdmin announcements and on-screen messages
 - 🔌 **Control from other resources** via events (`cswatermark:hide` / `cswatermark:show`)
@@ -66,7 +68,7 @@ Config = {
     position = {
         anchor = 'top-center',
         x = '-1vw',
-        y = '1vh'
+        y = '-4vh'
     },
     size = {
         width = 110,
@@ -74,7 +76,7 @@ Config = {
     },
     opacity = 1.0,
     animation = {
-        mode = 'shimmer-rotatory',
+        mode = 'jelly',
         speed = 1.0,
         intensity = 1.0
     },
@@ -103,7 +105,15 @@ animation = { mode = '...' }   -- one of these:
 -- floating         smooth vertical float
 -- shimmer          shine sweep across the logo
 -- shimmer-rotatory shine sweep + 3D rotation combined
+-- jelly            signature loop: planted squash → explosive jump →
+--                  720° spin on the Y axis → impact → decaying wobble →
+--                  shine sweep while the logo settles → rest → repeat
 ```
+
+> **Note:** `jelly` is fully time-choreographed on a single 10s timeline
+> (scaled by `speed`). Every squash keeps the logo base planted on the
+> "floor", and the shine only runs while the logo is settled, so it always
+> ends readable. Tune the feel with `speed` and `intensity` in `config.lua`.
 
 ---
 

@@ -3,7 +3,7 @@ game 'gta5'
 
 author 'caronte_logo'
 description 'cs_watermark - NUI watermark logo'
-version '1.0.0'
+version '1.0.1'
 
 lua54 'yes'
 
@@ -13,7 +13,7 @@ files {
     'html/index.html',
     'html/app.js',
     'html/style.css',
-    'html/assets/logo.png',
+    'html/assets/logo.png'
 }
 
 shared_script 'config.lua'

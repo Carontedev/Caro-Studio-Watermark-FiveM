@@ -1,7 +1,7 @@
 const root = document.getElementById('logo-root');
 const logo3d = document.getElementById('logo-3d');
 const logoImgs = document.querySelectorAll('.logo-img');
-const modeClasses = ['mode-static', 'mode-rotatory', 'mode-breathing', 'mode-floating', 'mode-shimmer', 'mode-shimmer-rotatory'];
+const modeClasses = ['mode-static', 'mode-rotatory', 'mode-breathing', 'mode-floating', 'mode-shimmer', 'mode-shimmer-rotatory', 'mode-jelly'];
 const anchorClasses = ['anchor-top-left', 'anchor-top-center', 'anchor-top-right', 'anchor-bottom-left', 'anchor-bottom-right'];
 let readySent = false;
 
@@ -16,7 +16,8 @@ const injectShimmerMask = path => {
   shimmerStyle = document.createElement('style');
   shimmerStyle.textContent = `
     #logo-root.mode-shimmer #logo-3d::after,
-    #logo-root.mode-shimmer-rotatory #logo-3d::after {
+    #logo-root.mode-shimmer-rotatory #logo-3d::after,
+    #logo-root.mode-jelly #logo-3d::after {
       -webkit-mask-image: url("${path}");
       mask-image: url("${path}");
       -webkit-mask-size: contain;
@@ -120,6 +121,7 @@ const updateTransitionDuration = ms => {
 
 const applyConfig = cfg => {
   lastConfig = cfg;
+  root.classList.remove('wm-init-hidden');
   const enabled = cfg.enabled !== false;
   root.style.display = enabled ? 'block' : 'none';
   applyAnchor(cfg.position?.anchor, cfg.position?.x, cfg.position?.y);
